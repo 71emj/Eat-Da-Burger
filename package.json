@@ -1,0 +1,33 @@
+{
+  "name": "eat-da-burger",
+  "version": "1.0.0",
+  "description": "Putting database, server-side rendering, and event-emitter in one package ",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"all is well\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/71emj/Eat-Da-Burger.git"
+  },
+  "keywords": [
+    "express",
+    "mysql",
+    "handlebars",
+    "event-emitter"
+  ],
+  "author": "71emj",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/71emj/Eat-Da-Burger/issues"
+  },
+  "homepage": "https://github.com/71emj/Eat-Da-Burger#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "express-handlebars": "^3.0.0",
+    "method-override": "^2.3.10",
+    "mysql": "^2.15.0",
+    "path": "^0.12.7"
+  }
+}
