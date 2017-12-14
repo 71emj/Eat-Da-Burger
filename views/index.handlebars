@@ -12,27 +12,25 @@
             </div>
          </div>
       </div>
-      <ul>
-         {{#each burgers}}
-         <li>
-            <span>{{this.burger_name}}</span>
-            <span>
-				<button class="btn burger_eat">Eat Da Burger</button>
-			</span>
-         </li>
-         {{/each}}
+      <ul class="burger_btn">
+         <div class="align-padding">
+            {{#each burgers}}
+            <li>
+               <button value="{{this.burger_name}}" data-id="{{{ this.id }}}" class="btn burger_eat">Eat {{this.burger_name}}</button>
+            </li>
+            {{/each}}
+         </div>
       </ul>
    </div>
    <div class="body col s6">
-      <ul>
-         {{#each devoured}}
-         <li>
-            <span>{{this.burger_name}}</span>
-            <span>
-				<button class="btn disabled">YUMMMMM</button>
-			</span>
-         </li>
-         {{/each}}
+      <ul class="right-align burger_btn">
+         <div class="align-padding">
+            {{#each devoured}}
+            <li>
+               <button class="btn disabled">{{this.burger_name}} MMMM</button>
+            </li>
+            {{/each}}
+         </div>
       </ul>
    </div>
 </main>

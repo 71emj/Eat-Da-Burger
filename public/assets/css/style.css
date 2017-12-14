@@ -1,0 +1,61 @@
+body {
+   padding: 5rem 0 5rem 0;
+   height: 100%;
+}
+
+footer {
+   position: fixed;
+   bottom: 0;
+   height: 5rem;
+   width: 100%;
+}
+
+.img {
+   height: 100%;
+   margin: auto;
+   background: url("/assets/img/burger.svg");
+   background-size: 50vh;
+   background-repeat: no-repeat;
+   background-attachment: fixed;
+   background-position: center center;
+}
+
+nav {
+   position: fixed;
+   top: 0;
+   height: 72px;
+   padding: 1rem 0 1rem 0;
+   line-height: 1.5;
+   box-shadow: none;
+}
+
+.nav-wrapper {
+   display: flex;
+   flex-flow: row;
+   align-items: center;
+   justify-content: space-between;
+   padding: 0 2rem;
+}
+
+.nav-wrapper>.brand-logo {
+   position: relative;
+}
+
+#nav-mobile {
+   display: inline-block;
+   line-height: 2;
+}
+
+#burger_name {
+   font-size: 28px;
+   padding: 1.2rem 0 1.2rem 0;
+   border-bottom: 1px dashed white;
+}
+
+.align-padding {
+   display: flex;
+   flex-flow: row;
+   align-items: center;
+   justify-content: flex-start;
+   padding: 0 10px;
+}

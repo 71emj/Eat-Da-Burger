@@ -10,111 +10,12 @@
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
    <!-- Compiled and minified JavaScript -->
    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-   <style type="text/css">
-   body {
-      padding: 5rem 0 5rem 0;
-      height: 100%;
-   }
-
-   footer {
-      position: fixed;
-      bottom: 0;
-      height: 5rem;
-      width: 100%;
-   }
-
-   .img {
-      height: 100%;
-      margin: auto;
-      background: url("/assets/img/burger.svg");
-      background-size: 50vh;
-      background-repeat: no-repeat;
-      background-attachment: fixed;
-      background-position: center center;
-   }
-
-   nav {
-      position: fixed;
-      top: 0;
-      height: 72px;
-      padding: 1rem 0 1rem 0;
-      line-height: 1.5;
-      box-shadow: none;
-   }
-
-   .nav-wrapper {
-      display: flex;
-      flex-flow: row;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 2rem;
-   }
-
-   .nav-wrapper>.brand-logo {
-      position: relative;
-   }
-
-   #nav-mobile {
-      display: inline-block;
-      line-height: 2;
-   }
-
-   #burger_name {
-      font-size: 28px;
-      padding: 1.2rem 0 1.2rem 0;
-      border-bottom: 1px dashed white;
-   }
-
-   .align-padding {
-      display: flex;
-      flex-flow: row;
-      align-items: center;
-      justify-content: flex-start;
-      padding: 0 10px;
-   }
-   </style>
+   <link rel="stylesheet" type="text/css" href="../assets/css/style.css" />
 </head>
 
 <body class="deep-orange img">
-   {{> header }} 
-   {{{ body }}}
-   {{> footer }}
-   <script type="text/javascript">
-   const newBurgerBtn = document.getElementById("burger_new"),
-      eatBurgerBtns = document.querySelectorAll(".buger_eat");
-
-   newBurgerBtn.onclick = function(event) {
-      event.preventDefault();
-
-      const burgerName = $("#burger_name").val();
-
-      // if 
-      $.ajax({
-         url: "/eat-da-burger",
-         method: "POST",
-         data: { name: burgerName },
-         traditional: true
-      }).done(function(response) {
-         console.log(response);
-      });
-   }
-
-   // eatBurgerBtns.onclick = function(event) {
-   //    event.preventDefault();
-
-   //    const burgerName = $("#burger_name").val();
-
-   //    // if 
-   //    $.ajax({
-   //       url: "/eat-da-burger",
-   //       method: "POST",
-   //       data: { name: burgerName, devoured: true },
-   //       traditional: true
-   //    }).done(function(response) {
-   //       console.log(response);
-   //    });
-   // }
-   </script>
+   {{> header }} {{{ body }}} {{> footer }}
+   <script src="../assets/script/index.js"></script>
 </body>
 
 </html>

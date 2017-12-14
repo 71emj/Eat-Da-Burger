@@ -26,19 +26,19 @@ emitter.once("server-init", function(initMsg) {
       controller = require(Join(__dirname, "controllers/burgers_controller.js"))(emitter),
       models = require(Join(__dirname, "models/burger.js"))(emitter, sql); // return Handlebars
 
-   // setup middleware & router
    app.use(BodyParser.urlencoded({ extended: false }));
    app.use(BodyParser.json());
    app.use(Express.static(Join(__dirname, "public")));
    app.engine("handlebars", models({
       defaultLayout: "main",
-      extname: "handlebars",
-      extended: true
+      extname: "handlebars"
    }));
    app.set("view engine", "handlebars");
+   
    app.get("/*", controller);
    app.post("/eat-da-burger", controller);
-
+   app.put("/eat-da-burger", controller);
+  
    // DEBUG && emitter.emit("first-test");
    emitter.emit("connect-sql");
 });
