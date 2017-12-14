@@ -15,19 +15,5 @@ module.exports = function(emitter) {
       });
    });
 
-   // This is where I build functionality, need cautious in it's que stack
-   emitter.once("sql-connected", function() {
-      const orm = require("./orm.js")(emitter, connection);
-      orm.selectAll();
-
-      emitter.on("select-all", function() {
-      	orm.selectAll();
-      })
-
-      emitter.on("more-burger", function(burgerName) {
-      	orm.insertOne(burgerName);
-      });
-   });
-
-   return;
+   return connection;
 }

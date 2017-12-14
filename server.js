@@ -4,7 +4,8 @@ const BodyParser = require("body-parser"),
    MethodOverride = require("method-override"),
    Path = require("path"),
    Events = require("events"),
-   app = require("express")(),
+   Express = require("express"),
+   app = Express(),
    emitter = new Events();
 
 const Join = Path.join;
@@ -12,8 +13,8 @@ const Join = Path.join;
 // handling uncaught errors
 require(Join(__dirname, "errorhandler/handler.js"));
 
-app.listen(8080, function(err) {
-   console.log("Server listening on port %i", 8080);
+app.listen(process.env.PORT || 8008, function(err) {
+   console.log("Server listening on port %i", process.env.PORT || 8008);
    emitter.emit("server-init", "Okay setup connections");
 });
 
@@ -22,18 +23,22 @@ emitter.once("server-init", function(initMsg) {
 
    // setup file connections
    const sql = require(Join(__dirname, "config/connection.js"))(emitter),
-   	controller = require(Join(__dirname, "controllers/burgers_controller.js"))(emitter),
-   	models = require(Join(__dirname, "models/burger.js"))(emitter);
-
-   // sql();
-   // controller();
-   // models();
+      controller = require(Join(__dirname, "controllers/burgers_controller.js"))(emitter),
+      models = require(Join(__dirname, "models/burger.js"))(emitter, sql); // return Handlebars
 
    // setup middleware & router
    app.use(BodyParser.urlencoded({ extended: false }));
    app.use(BodyParser.json());
-   app.use("/?", controller);
+   app.use(Express.static(Join(__dirname, "public")));
+   app.engine("handlebars", models({
+      defaultLayout: "main",
+      extname: "handlebars",
+      extended: true
+   }));
+   app.set("view engine", "handlebars");
+   app.get("/*", controller);
+   app.post("/eat-da-burger", controller);
 
-   DEBUG && emitter.emit("first-test");
+   // DEBUG && emitter.emit("first-test");
    emitter.emit("connect-sql");
 });

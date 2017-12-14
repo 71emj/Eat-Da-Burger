@@ -1,25 +1,33 @@
-// const Path = require("path"),
-// 	Join = Path.join;
+const Path = require("path"),
+	Join = Path.join;
 
 // // handling uncaught errors
-// require(Join(__dirname, "errorhandler/handler.js"));
+// require(Path.join(__dirname, "errorhandler/handler.js"));
 
 module.exports = function(emitter) {
-   const DEBUG = true; 
+   const DEBUG = true;
    const ctrlRoute = new require("express").Router();
 
-   emitter.on("first-test", function() {
-   	console.log("Now waiting for get request");
-   	ctrlRoute.get("/:path?", (req, res) => {
-   		console.log("GET!!");
-   		res.send("Success!!");
-   	});
+   emitter.once("sql-connected", function() {
+      ctrlRoute.get("/eat-da-burger?", function(req, res) {
+         console.log("GET!!");
+         emitter.emit("render-initial", res);
+      });
    });
 
-   emitter.on("query-complete", function(data) {
-   	console.log(data);
+   ctrlRoute.post("/eat-da-burger", function(req, res) {
+      // depending what i get send out different event
+      // console.log(req.body);
+      Object.setPrototypeOf(req.body, {});
+      const burger = req.body;
+      console.log(burger);
+      console.log(typeof burger);
 
-   	emitter.emit("more-burger", "Whopper");
+      if (burger.hasOwnProperty("devoured")) {
+      	return emitter.emit("update-one", burger.name, res);
+      }
+
+      emitter.emit("more-burger", burger.name, res);
    });
 
    return ctrlRoute;
