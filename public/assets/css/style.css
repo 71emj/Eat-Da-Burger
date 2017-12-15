@@ -1,6 +1,10 @@
+html {
+   min-height: 100%;
+}
+
 body {
-   padding: 5rem 0 5rem 0;
-   height: 100%;
+   padding: 5rem 0 2rem 0;
+   min-height: 90vh;
 }
 
 footer {
@@ -8,6 +12,11 @@ footer {
    bottom: 0;
    height: 5rem;
    width: 100%;
+}
+
+.header.col.s6,
+.body.col.s6 {
+   padding: .75rem .75rem;
 }
 
 .img {
@@ -53,9 +62,52 @@ nav {
 }
 
 .align-padding {
+   position: relative;
    display: flex;
-   flex-flow: row;
+   flex-flow: row wrap;
    align-items: center;
    justify-content: flex-start;
    padding: 0 10px;
 }
+
+.align-btns {
+   display: flex;
+   flex-flow: row wrap;
+   align-items: flex-start;
+   justify-content: flex-start;
+   width: 80%;
+   padding: 0 10px;
+}
+
+.body .align-btns {
+   float: right;
+   position: relative;
+   bottom: 0;
+   display: flex;
+   flex-flow: row wrap;
+   align-items: flex-start;
+   justify-content: flex-end;
+   height: 100%;
+   width: 60%;
+   margin-top: 3rem;
+   padding: 0 10px;
+}
+
+.align-btns .btn {
+   display: table;
+   text-align: left;
+}
+
+.align-btns>li {
+   margin: .5rem .6rem;
+}
+
+.disabled {
+   opacity: 0.8;
+}
+
+/*.hover {
+   content: "Eat Again ?";
+   opacity: 1;
+   background-color: red;
+}*/

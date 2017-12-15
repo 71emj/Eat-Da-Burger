@@ -1,6 +1,5 @@
 <main class="row">
    <div class="header col s6">
-      <br>
       <div class="row">
          <div class="align-padding">
             <div class="input-field col s6" style="margin-left: 0;">
@@ -8,15 +7,15 @@
                <label for="burger_name" class="white-text">What Burger Would You Like to Eat Today?</label>
             </div>
             <div class="col s3" style="margin-left: 24px;">
-               <button id="burger_new" class="hoverable btn-large waves-effect waves-light purple ">Da Burger</button>
+               <button id="burger_new" class="hoverable btn-large waves-effect waves-light amber darken-3">Da Burger</button>
             </div>
          </div>
       </div>
       <ul class="burger_btn">
-         <div class="align-padding">
+         <div class="align-btns">
             {{#each burgers}}
             <li>
-               <button value="{{this.burger_name}}" data-id="{{{ this.id }}}" class="btn burger_eat">Eat {{this.burger_name}}</button>
+               <button value="{{this.burger_name}}" data-id="{{{ this.id }}}" class="btn burger_eat purple">Eat {{this.burger_name}}</button>
             </li>
             {{/each}}
          </div>
@@ -24,10 +23,10 @@
    </div>
    <div class="body col s6">
       <ul class="right-align burger_btn">
-         <div class="align-padding">
+         <div class="align-btns">
             {{#each devoured}}
             <li>
-               <button class="btn disabled">{{this.burger_name}} MMMM</button>
+               <button class="btn disabled hover">{{this.burger_name}}</button>
             </li>
             {{/each}}
          </div>

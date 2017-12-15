@@ -4,9 +4,29 @@
       eatBurgerBtns = document.querySelectorAll("ul.burger_btn")[0];
 
    console.log(newBurgerBtn);
+
+   function validate(data) {
+      data = data.trim();
+
+      if (!data || !!data.match(/[^a-z\s]/gi)) {
+         return false;
+      }
+
+      const temp = data.split(" ").map((elem) => {
+         return elem.replace(/[a-z]/i, elem[0].toUpperCase());
+      }),
+      burgerName = temp.join(" ");
+      return burgerName;
+   }
+
+
    newBurgerBtn.onclick = function(event) {
       event.preventDefault();
-      const burgerName = $("#burger_name").val();
+      const burgerName = validate($("#burger_name").val());
+
+      if (!burgerName) {
+         return;
+      }
 
       $.ajax({
          url: "/eat-da-burger",
@@ -23,7 +43,7 @@
       // location.reload();
       const evntTarget = $(event.target);
       if (evntTarget.is("button")) {
-      	event.preventDefault();
+         event.preventDefault();
          const burgerName = evntTarget.val();
 
          $.ajax({

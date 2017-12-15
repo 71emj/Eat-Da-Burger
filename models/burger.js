@@ -5,15 +5,16 @@ const Path = require("path"),
    exHbs = require("express-handlebars");
 
 // handling uncaught errors
-require(Join(__dirname, "../errorhandler/handler.js"));
+require(Join(__dirname, "../errorhandler/handler.js"))();
 
 module.exports = function(emitter, connection) {
    const orm = require(Join(__dirname, "../config/orm.js"))(emitter, connection);
-   let res = "response object";
+   let apiflag, res = "response object";
 
    // render the page when first being requested by the user
-   emitter.on("render-initial", function(response) {
+   emitter.on("render-initial", function(response, flag) {
       res = response;
+      apiflag = flag;
       orm.selectAll();
    });
 
@@ -42,7 +43,7 @@ module.exports = function(emitter, connection) {
          });
 
       DEBUG && console.log("send");
-      res.render("index", { burgers: burger, devoured: devBurger });
+      !!apiflag ? res.send(data) : res.render("index", { burgers: burger, devoured: devBurger });
       // const html = exHbs.renderView("index", { burgers: burger, devoured: devBurger });
       // console.log(html);
    });

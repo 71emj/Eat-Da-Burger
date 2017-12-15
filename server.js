@@ -11,7 +11,7 @@ const BodyParser = require("body-parser"),
 const Join = Path.join;
 
 // handling uncaught errors
-require(Join(__dirname, "errorhandler/handler.js"));
+require(Join(__dirname, "errorhandler/handler.js"))();
 
 app.listen(process.env.PORT || 8008, function(err) {
    console.log("Server listening on port %i", process.env.PORT || 8008);

@@ -1,6 +1,8 @@
 module.exports = function(emitter) {
+   require("dotenv").config();
+   
    const Mysql = require("mysql");
-   const connection = process.env.JAWSDB_URL ? 
+   const connection = process.env.JAWSDB_URL ?
       Mysql.createConnection(process.env.JAWSDB_URL) :
       Mysql.createConnection({
          host: process.env.DB_HOST,
